@@ -134,7 +134,7 @@ int main( int argc, const char** argv )
 	circle(matInpaint,Point(255,255),100,Scalar(255),10);
 	circle(matInpaintMask,Point(255,255),100,Scalar(255),10);
 	imshow("befor inpaint",matInpaint);
-	inpaint(matInpaint,matInpaintMask,matInpaint,10,CV_INPAINT_TELEA);
+	inpaint(matInpaint,matInpaintMask,matInpaint,10, INPAINT_TELEA);
 	imshow("after inpaint",matInpaint);
 	//the result is :if "the writing obscured a real object edge in a picture",the result is bad
 	/************************************************************************/

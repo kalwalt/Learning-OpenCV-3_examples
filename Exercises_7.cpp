@@ -1,6 +1,7 @@
 //Exercises at end of Chapter 7
 // 1-4
 #include <opencv2/opencv.hpp>
+#include <opencv2/core/core_c.h>
 #include <iostream>
 
 using namespace cv;

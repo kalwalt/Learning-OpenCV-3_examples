@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
       cv::circle(img, points[i], 2,
                  i < count - outliers ? cv::Scalar(0, 0, 255)
                                       : cv::Scalar(0, 255, 255),
-                 cv::FILLED, CV_AA, 0);
+                 cv::FILLED, CV_MSA, 0);
 
     // ... and the long enough line to cross the whole image
     d = sqrt((double)line[0] * line[0] + (double)line[1] * line[1]);
@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
     pt1.y = cvRound(line[3] - line[1] * t);
     pt2.x = cvRound(line[2] + line[0] * t);
     pt2.y = cvRound(line[3] + line[1] * t);
-    cv::line(img, pt1, pt2, cv::Scalar(0, 255, 0), 3, CV_AA, 0);
+    cv::line(img, pt1, pt2, cv::Scalar(0, 255, 0), 3, CV_MSA, 0);
     cv::imshow("Fit Line", img);
     key = (char)cv::waitKey(0);
     if (key == 27 || key == 'q' || key == 'Q') // 'ESC'

@@ -20,7 +20,7 @@ int main( int argc, char** argv) {
 	// Argument handling
 	//
 	if(argc != 2) { help(argv); return -1; }
-	cv::namedWindow( argv[0], CV_WINDOW_AUTOSIZE );
+	cv::namedWindow( argv[0], cv::WINDOW_AUTOSIZE );
 	cv::VideoCapture cap;
 	if((argc < 2)|| !cap.open(argv[1]))
 	{

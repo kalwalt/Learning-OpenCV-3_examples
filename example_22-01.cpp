@@ -32,7 +32,7 @@ void detectAndDraw(
     // Image preparation:
     //
     cv::Mat gray(img.size(), CV_8UC1);
-    cv::Mat small_img(cvSize(cvRound(img.cols / scale),
+    cv::Mat small_img(cv::Size(cvRound(img.cols / scale),
         cvRound(img.rows / scale)), CV_8UC1);
     cv::cvtColor(img, gray, cv::COLOR_BGR2GRAY);
     cv::resize(gray, small_img, small_img.size(), 0.0, 0.0, cv::INTER_LINEAR);
@@ -45,7 +45,7 @@ void detectAndDraw(
         objects,                    // place for the results
         1.1,                        // scale factor
         3,                          // minimum number of neighbors
-        CV_HAAR_DO_CANNY_PRUNING,   // (old format cascades only)
+        cv::CASCADE_DO_CANNY_PRUNING,   // (old format cascades only)
         cv::Size(30, 30));          // throw away detections smaller than this
 
     // Loop through to found objects and draw boxes around them
@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
         exit(1);
     }
     string image_file_name = string(argv[1]);
-    cv::Mat img = cv::imread(image_file_name, CV_LOAD_IMAGE_COLOR);
+    cv::Mat img = cv::imread(image_file_name, cv::IMREAD_COLOR);
     string cascade_file_name = string(argv[2]);
     cv::Ptr<cv::CascadeClassifier> cascade(new cv::CascadeClassifier(cascade_file_name));
     detectAndDraw(img, cascade);

@@ -113,7 +113,7 @@ int main( int argc, const char** argv )
 	/************************************************************************/
 	cvtColor(src,gray,COLOR_BGR2GRAY);
 	//a 
-	morphologyEx(gray,temp,CV_MOP_TOPHAT,Mat());
+	morphologyEx(gray,temp, MORPH_TOPHAT,Mat());
 	imshow(" morphological  Top  Hat",temp);
 	//b
 	temp.convertTo(mask,CV_8UC1);
@@ -171,7 +171,7 @@ int main( int argc, const char** argv )
 	matKernel.at<float>(2,1) = 0;
 	matKernel.at<float>(2,2) = 0;
 	filter2D(matWithLines,temp,CV_32FC1,matKernel);
-	threshold(temp,temp,0.99,1,CV_THRESH_BINARY);
+	threshold(temp,temp,0.99,1, THRESH_BINARY);
 	/************************************************************************/
 	/* 16.  Separable kernels: create a 3 × 3 Gaussian kernel using rows [(1/16, 2/16, 1/16),
 	(2/16, 4/16, 2/16), (1/16, 2/16, 1/16)] and with anchor point in the middle.

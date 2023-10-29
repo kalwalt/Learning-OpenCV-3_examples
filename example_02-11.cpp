@@ -31,14 +31,15 @@ int main( int argc, char** argv ) {
   //
 
   cv::VideoCapture capture( argv[1] );
-  double fps = capture.get( CV_CAP_PROP_FPS );
+  double fps = capture.get( cv::CAP_PROP_FPS );
   cv::Size size(
-    (int)capture.get( CV_CAP_PROP_FRAME_WIDTH ),
-    (int)capture.get( CV_CAP_PROP_FRAME_HEIGHT )
+    (int)capture.get( cv::CAP_PROP_FRAME_WIDTH ),
+    (int)capture.get( cv::CAP_PROP_FRAME_HEIGHT )
   );
 
   cv::VideoWriter writer;
-  writer.open( argv[2], CV_FOURCC('M','J','P','G'), fps, size );
+  int codec = cv::VideoWriter::fourcc('M', 'J', 'P', 'G');
+  writer.open( argv[2], codec, fps, size );
 
   cv::Mat logpolar_frame, bgr_frame;
 
@@ -57,7 +58,7 @@ int main( int argc, char** argv ) {
         bgr_frame.rows/2 // y
       ),
       40, // Magnitude (scale parameter)
-      CV_WARP_FILL_OUTLIERS // Fill outliers with 'zero'
+      cv::WARP_FILL_OUTLIERS // Fill outliers with 'zero'
     );
 
     cv::imshow( "Log_Polar", logpolar_frame );

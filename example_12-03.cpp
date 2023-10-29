@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    img = cv::imread(std::string(argv[1]), CV_LOAD_IMAGE_COLOR);
+    img = cv::imread(std::string(argv[1]), cv::IMREAD_COLOR);
     if (img.channels() != 3) {
         cerr << "Input image should have 3 channels" << endl;
         exit(1);

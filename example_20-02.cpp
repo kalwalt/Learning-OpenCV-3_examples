@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
     vector<cv::Mat> means(CLUSTER_COUNT);
     for(int i = 0; i < CLUSTER_COUNT; i++) {
         cv::calcCovarMatrix(clusters[i], covarMats[i], means[i],
-                            CV_COVAR_NORMAL | CV_COVAR_ROWS, 5);
+                            cv::COVAR_NORMAL | cv::COVAR_ROWS, 5);
 
     }
 

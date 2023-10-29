@@ -44,7 +44,7 @@ int main( int argc, const char** argv )
 		cout << "Could not open " << argv[1] << endl;
 		return 1;
 	}
-	double rate=capture.get(CV_CAP_PROP_FPS);
+	double rate=capture.get(cv::CAP_PROP_FPS);
 	Mat MatFrame;
 	Mat MatGray;
 	Mat MatCanny;
@@ -63,15 +63,15 @@ int main( int argc, const char** argv )
 		//(1)
 		imshow("Raw Video",MatFrame);
 		//(2)
-		cvtColor(MatFrame,MatGray,COLOR_BGR2GRAY);
+		cvtColor(MatFrame,MatGray, COLOR_BGR2GRAY);
 		imshow("Gray Video",MatGray);
 		//(3)
 		Canny(MatGray,MatCanny,100,255);
 		imshow("Canny Video",MatCanny);
 		//question a
-		Mat MatAll(MatFrame.rows,3* MatFrame.cols  ,CV_8UC3,Scalar::all(0));
-		cvtColor(MatGray,MatGray,COLOR_GRAY2BGR);
-		cvtColor(MatCanny,MatCanny,COLOR_GRAY2BGR);
+		Mat MatAll(MatFrame.rows,3* MatFrame.cols, CV_8UC3, Scalar::all(0));
+		cvtColor(MatGray,MatGray, COLOR_GRAY2BGR);
+		cvtColor(MatCanny,MatCanny, COLOR_GRAY2BGR);
 		Mat MatSub = MatAll.colRange(0, MatFrame.cols);
 		MatFrame.copyTo(MatSub);
 		MatSub = MatAll.colRange( MatFrame.cols,2*MatFrame.cols);
@@ -80,9 +80,9 @@ int main( int argc, const char** argv )
 		MatCanny.copyTo(MatSub);
 		//question b
 		Scalar color = CV_RGB(255,0,0);
-		putText(MatAll,"raw video",Point(50,30),CV_FONT_HERSHEY_DUPLEX,1.0f,color);
-		putText(MatAll,"gray video",Point(50+MatFrame.cols,30),CV_FONT_HERSHEY_DUPLEX,1.0f,color);
-		putText(MatAll,"canny video",Point(50+2*MatFrame.cols,30),CV_FONT_HERSHEY_DUPLEX,1.0f,color);
+		putText(MatAll,"raw video",Point(50,30), FONT_HERSHEY_DUPLEX,1.0f,color);
+		putText(MatAll,"gray video",Point(50+MatFrame.cols,30), FONT_HERSHEY_DUPLEX,1.0f,color);
+		putText(MatAll,"canny video",Point(50+2*MatFrame.cols,30), FONT_HERSHEY_DUPLEX,1.0f,color);
 		imshow("all Video",MatAll);
 
 		if ((cv::waitKey(delay) & 255) == 27)
