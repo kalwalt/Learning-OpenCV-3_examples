@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    cv::namedWindow( "Example 9-4", CV_WINDOW_OPENGL );
+    cv::namedWindow( "Example 9-4", cv::WINDOW_OPENGL );
     cv::resizeWindow("Example 9-4", img.cols, img.rows);
     cv::createTrackbar( "X-rotation", "Example 9-4", &rotx, 360, on_trackbar);
     cv::createTrackbar( "Y-rotation", "Example 9-4", &roty, 360, on_trackbar);
